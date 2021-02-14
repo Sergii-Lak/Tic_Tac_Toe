@@ -1,3 +1,8 @@
+"""
+The computer play the game using 'X's;
+The user play the game using 'O's;
+The first move belongs to the computer - it always puts its first 'X' in the middle of the board;"""
+
 import random
 
 board = [["1", "2", "3"], ["4", "5", "6"], ["7", "8", "9"]]
@@ -11,7 +16,8 @@ def display_board(board):
                     "|" + " " * 3 + i[2] + " " * 3) + "|")
         print(("|" + " " * 7) * 3 + "|")
         print(("+" + "-" * 7) * 3 + "+")
-
+# The function accepts one parameter containing the board's current status
+# and prints it out to the console.
 
 def enter_move(board):
     list_move = make_list_of_free_fields(board)
@@ -23,7 +29,8 @@ def enter_move(board):
                 if board[tup[0]][tup[1]] == move_user:
                     board[tup[0]][tup[1]] = "O"
                     breaker = False
-
+# The function accepts the board current status, asks the user about their move,
+# checks the input and updates the board according to the user's decision.
 
 def make_list_of_free_fields(board):
     list_of_free_fields = []
@@ -33,7 +40,8 @@ def make_list_of_free_fields(board):
                 tuple_row_column = (count, j)
                 list_of_free_fields.append(tuple_row_column)
     return list_of_free_fields
-
+# The function browses the board and builds a list of all the free squares;
+    # the list consists of tuples, while each tuple is a pair of row and column numbers.
 
 def victory_for(board, sign):
     if sign == "X":
@@ -66,12 +74,14 @@ def victory_for(board, sign):
         if 0 in list_of_free_fields[0] and 1 in list_of_free_fields[1] and 2 in list_of_free_fields[2]:
             print(name, "win!!!")
             return True
-
+# The function analyzes the board status in order to check if
+# the player using 'O's or 'X's has won the game
 
 def draw_move(board):
     list_move_comp = make_list_of_free_fields(board)
     move = random.choice(list_move_comp)
     board[move[0]][move[1]] = "X"
+# The function draws the computer's move and updates the board.
 
 
 print("START GAME")
